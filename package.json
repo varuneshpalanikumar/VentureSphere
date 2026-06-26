@@ -1,0 +1,10 @@
+{
+  "name": "venturesphere",
+  "version": "1.0.0",
+  "description": "VentureSphere full-stack app",
+  "scripts": {
+    "build": "npm install --prefix backend && cd frontend && npm install && npm run build",
+    "start": "node backend/server.js"
+  }
+}
+

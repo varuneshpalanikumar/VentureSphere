@@ -1,0 +1,23 @@
+const express = require("express");
+const router = express.Router();
+const authMiddleware = require("../middleware/authMiddleware");
+
+const {
+  createMentorRequest,
+  getRequestsForMentor,
+  getRequestsForFounder,
+  getStatusesForStartup,
+  acceptMentorRequest,
+  rejectMentorRequest
+} = require("../controllers/mentorRequestController");
+
+router.post("/", authMiddleware, createMentorRequest);
+
+router.get("/mentor/:mentorId", authMiddleware, getRequestsForMentor);
+router.get("/founder/:founderId", authMiddleware, getRequestsForFounder);
+router.get("/statuses/startup/:startupId", authMiddleware, getStatusesForStartup);
+
+router.put("/accept/:requestId", authMiddleware, acceptMentorRequest);
+router.put("/reject/:requestId", authMiddleware, rejectMentorRequest);
+
+module.exports = router;
